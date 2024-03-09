@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 function App() {
   // создаем диспетчер для изменения State
   const dispatch = useDispatch();
-  // получаем состояние
-  const cash = useSelector(state => state.cash);
+  // получаем состояние state => состояние.редусер.поле
+  const cash = useSelector(state => state.cash.cash);
 
   
   /**
