@@ -70,6 +70,29 @@ function App() {
             Снять деньги
           </button>
         </div>
+
+        <div className='buttons'>
+          <button onClick={() => addCustomer(prompt("Имя нового клиента", ""))}>
+            Добавить клиента
+          </button>
+          <button>
+            Удалить клиента
+          </button>
+        </div>
+
+        {customers.length > 0 ?
+          <div className="card">
+            {customers.map(customer =>
+              <div
+                className='customer'
+                key={customer.id}
+                onClick={() => removeCustomer(customer)}
+              >{customer.name}</div>
+            )}
+          </div>
+          :
+          <div className="card">Клиентов нет ;(</div>
+        }
       </div>
 
     </>
