@@ -37,6 +37,25 @@ function App() {
     });
   }
 
+  const addCustomer = (name) => {
+    const customer = {
+      name,
+      id: Date.now(),
+    };
+
+    dispatch({
+      type: "ADD_CUSTOMER",
+      payload: customer
+    })
+  }
+
+  const removeCustomer = (customer) => {
+    dispatch({
+      type: "REMOVE_CUSTOMER",
+      payload: customer.id
+    })
+  }
+
   return (
     <>
       <h1>Vite + React + Redux</h1>
