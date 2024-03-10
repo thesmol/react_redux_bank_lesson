@@ -6,6 +6,8 @@ function App() {
   const dispatch = useDispatch();
   // получаем состояние state => состояние.редусер.поле
   const cash = useSelector(state => state.cash.cash);
+  const customers = useSelector(state => state.customers.customers);
+
 
   
   /**
