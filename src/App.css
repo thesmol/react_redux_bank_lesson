@@ -5,12 +5,25 @@
   text-align: center;
 }
 
-}
-
-}
-
 .card {
-  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  padding: 1em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.customer {
+  padding: 5px;
+  font-size: 22px;
+  border: solid 1px rgb(56, 56, 56);
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .read-the-docs {
