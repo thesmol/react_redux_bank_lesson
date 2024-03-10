@@ -12,12 +12,12 @@ const defaultState = {
  */
 export const castomerReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case "ADD_CUSTOMER": {
-            return { ...state, customers: [...state.customers, action.payload] };
+        case "ADD_CASTOMER": {
+            return { ...state, cash: state.cash + action.payload };
         }
 
-        case "GET_CASTOMERS": {
-            return { ...state, cash: state.cash - action.payload };
+        case "REMOVE_CUSTOMER": {
+            return { ...state, customers: state.customers.filter(customer => customer.id !== action.payload)};
         }
         default: return state;
     }
