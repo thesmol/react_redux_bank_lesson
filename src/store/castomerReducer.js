@@ -5,6 +5,7 @@ const defaultState = {
 // снесенные в переменные actions
 const ADD_CUSTOMER = "ADD_CUSTOMER";
 const REMOVE_CUSTOMER = "REMOVE_CUSTOMER";
+const ADD_MANY_CUSTOMER = "ADD_MANY_CUSTOMER";
 
 /**
  * функция принимающая состояние и action, всегда возвращает новый объект состояние
@@ -16,6 +17,10 @@ const REMOVE_CUSTOMER = "REMOVE_CUSTOMER";
  */
 export const castomerReducer = (state = defaultState, action) => {
     switch (action.type) {
+        case ADD_MANY_CUSTOMER: {
+            return {...state, customers: [...state.customers, ...action.payload]}
+        }
+
         case ADD_CUSTOMER: {
             return { ...state, customers: [...state.customers, action.payload] };
         }
@@ -27,6 +32,7 @@ export const castomerReducer = (state = defaultState, action) => {
     }
 }
 
-// функция возвращающая объект action
+// функция action creator возвращающая объект action
+export const addManyCustomersAction = (payload) => ({type: ADD_MANY_CUSTOMER, payload});
 export const addCustomerAction = (payload) => ({type: ADD_CUSTOMER, payload});
 export const removeCustomerAction = (payload) => ({type: REMOVE_CUSTOMER, payload});
