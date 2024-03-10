@@ -9,7 +9,6 @@ function App() {
   const customers = useSelector(state => state.customers.customers);
 
 
-  
   /**
    * Обработчик добавления денег
    * @date 3/9/2024 - 11:05:33 PM
@@ -24,12 +23,12 @@ function App() {
     });
   }
 
-   /**
-   * Обработчик удаления денег
-   * @date 3/9/2024 - 11:05:33 PM
-   *
-   * @param {*} cash
-   */
+  /**
+  * Обработчик удаления денег
+  * @date 3/9/2024 - 11:05:33 PM
+  *
+  * @param {*} cash
+  */
   const getCash = (cash) => {
     dispatch({
       type: "GET_CASH",
@@ -63,13 +62,16 @@ function App() {
         {`Вот столько денег: ${cash}`}
       </div>
       <div className="card">
-        <button onClick={() => addCash(+prompt("Сколько положить?", 0))}>
-          Пополнить счет
-        </button>
-        <button onClick={() => getCash(+prompt("Сколько положить?", 0))}>
-          Снять деньги
-        </button>
+        <div className='buttons'>
+          <button onClick={() => addCash(+prompt("Сколько положить?", 0))}>
+            Пополнить счет
+          </button>
+          <button onClick={() => getCash(+prompt("Сколько положить?", 0))}>
+            Снять деньги
+          </button>
+        </div>
       </div>
+
     </>
   )
 }
