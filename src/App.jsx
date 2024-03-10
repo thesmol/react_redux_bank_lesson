@@ -2,6 +2,7 @@ import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCustomerAction, removeCustomerAction } from './store/castomerReducer';
 import { addCashAction, getCashAction } from './store/cashReducer';
+import { fetchCustomers } from './asyncActions/customer';
 
 function App() {
   // создаем диспетчер для изменения State
@@ -65,13 +66,13 @@ function App() {
           <button onClick={() => addCustomer(prompt("Имя нового клиента", ""))}>
             Добавить клиента
           </button>
-          <button>
-            Удалить клиента
+          <button onClick={() => dispatch(fetchCustomers())}>
+            Получить клиентов
           </button>
         </div>
 
         {customers.length > 0 ?
-          <div className="card">
+          <div className="card" style = {{flexDirection: 'column-reverse'}}>
             {customers.map(customer =>
               <div
                 className='customer'
