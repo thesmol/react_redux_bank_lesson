@@ -2,7 +2,7 @@ import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCustomerAction, removeCustomerAction } from './store/castomerReducer';
 import { addCashAction, getCashAction } from './store/cashReducer';
-import { decrementCreator, incrementCreator } from  './store/countReducer'; 
+import { AsyncIncrementCreator, decrementCreator, incrementCreator } from  './store/countReducer'; 
 import { fetchCustomers } from './asyncActions/customer';
 
 function App() {
@@ -101,7 +101,7 @@ function App() {
       <div className="card">{count}</div>
 
       <div className='buttons'>
-        <button onClick={() => dispatch(incrementCreator())}>
+        <button onClick={() => dispatch(AsyncIncrementCreator())}>
           Инкремент
         </button>
         <button onClick={() => dispatch(decrementCreator())}>
