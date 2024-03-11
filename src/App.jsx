@@ -2,8 +2,9 @@ import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCustomerAction, removeCustomerAction } from './store/castomerReducer';
 import { addCashAction, getCashAction } from './store/cashReducer';
-import { AsyncIncrementCreator, decrementCreator, incrementCreator } from  './store/countReducer'; 
+import { AsyncIncrementCreator, AsyncDecrementCreator } from  './store/countReducer'; 
 import { fetchCustomers } from './asyncActions/customer';
+import { fetchUsers } from './store/userReducer';
 
 function App() {
   // создаем диспетчер для изменения State
@@ -104,13 +105,14 @@ function App() {
         <button onClick={() => dispatch(AsyncIncrementCreator())}>
           Инкремент
         </button>
-        <button onClick={() => dispatch(decrementCreator())}>
+        <button onClick={() => dispatch(AsyncDecrementCreator())}>
           Декремент
         </button>
-        <button>
+        <button onClick={() => dispatch(fetchUsers())}>
           Получить пользователей
         </button>
-        <div className="card" style={{ flexDirection: 'column-reverse' }}>
+      </div>
+      <div className="card" style={{ flexDirection: 'column-reverse' }}>
           {users.map((user, index) =>
             <div
               className='customer'
@@ -118,7 +120,6 @@ function App() {
             >{user.name}</div>
           )}
         </div>
-      </div>
     </>
   )
 }
