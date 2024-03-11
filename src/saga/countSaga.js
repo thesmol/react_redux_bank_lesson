@@ -21,5 +21,7 @@ function* decrementWorker() {
 export function* countWatcher() {
     // (1. параметр за которым следим, 
     // 2. воркер отрабатывающий, когда action типа 1 будет задиспачен)
-    yield takeEvery(ASYNC_INCRIMENT, incrementWorker)
+    yield takeEvery(ASYNC_INCREMENT, incrementWorker)
+
+    yield takeEvery(ASYNC_DECREMENT, decrementWorker)
 }
