@@ -2,7 +2,9 @@ import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCustomerAction, removeCustomerAction } from './store/castomerReducer';
 import { addCashAction, getCashAction } from './store/cashReducer';
+import { AsyncIncrementCreator, AsyncDecrementCreator } from  './store/countReducer'; 
 import { fetchCustomers } from './asyncActions/customer';
+import { fetchUsers } from './store/userReducer';
 
 function App() {
   // создаем диспетчер для изменения State
@@ -10,6 +12,9 @@ function App() {
   // получаем состояние state => состояние.редусер.поле
   const cash = useSelector(state => state.cash.cash);
   const customers = useSelector(state => state.customers.customers);
+
+  const count = useSelector(state => state.countReducer.count);
+  const users = useSelector(state => state.userReducer.users);
 
 
   /**
@@ -49,6 +54,7 @@ function App() {
   return (
     <>
       <h1>Vite + React + Redux</h1>
+      <h2>Первая часть</h2>
       <div className='card'>
         {`Вот столько денег: ${cash}`}
       </div>
@@ -72,7 +78,7 @@ function App() {
         </div>
 
         {customers.length > 0 ?
-          <div className="card" style = {{flexDirection: 'column-reverse'}}>
+          <div className="card" style={{ flexDirection: 'column-reverse' }}>
             {customers.map(customer =>
               <div
                 className='customer'
@@ -85,7 +91,35 @@ function App() {
           <div className="card">Клиентов нет ;(</div>
         }
       </div>
+      <div
+        style={{
+          width: '100%',
+          border: 'solid 1px',
+        }}
+      ></div>
 
+      <h2>Вторая часть</h2>
+      <div className="card">{count}</div>
+
+      <div className='buttons'>
+        <button onClick={() => dispatch(AsyncIncrementCreator())}>
+          Инкремент
+        </button>
+        <button onClick={() => dispatch(AsyncDecrementCreator())}>
+          Декремент
+        </button>
+        <button onClick={() => dispatch(fetchUsers())}>
+          Получить пользователей
+        </button>
+      </div>
+      <div className="card" style={{ flexDirection: 'column-reverse' }}>
+          {users.map((user, index) =>
+            <div
+              className='customer'
+              key={index}
+            >{user.name}</div>
+          )}
+        </div>
     </>
   )
 }
