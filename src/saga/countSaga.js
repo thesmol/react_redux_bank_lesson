@@ -1,5 +1,5 @@
 import { put, takeEvery } from "redux-saga/effects";
-import { incrementCreator, ASYNC_INCRIMENT, INCREMENT } from "../store/countReducer";
+import { incrementCreator, decrementCreator, ASYNC_INCREMENT, ASYNC_DECREMENT } from "../store/countReducer";
 // put - диспетчер для асинхронных actions
 
 
