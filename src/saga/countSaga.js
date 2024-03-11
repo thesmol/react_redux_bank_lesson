@@ -7,9 +7,14 @@ const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 // асинхронные action для работы с count
 function* incrementWorker() {
-    yield delay(1000)
+    yield delay(1000);
     //не выполнится пока не выполнится предыдущая часть
-    yield put(incrementCreator())
+    yield put(incrementCreator());
+}
+
+function* decrementWorker() {
+    yield delay(1000);
+    yield put(decrementCreator());
 }
 
 // для всех actions связанных со счетчиком создадим watcher
